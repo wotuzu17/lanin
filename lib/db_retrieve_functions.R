@@ -3,6 +3,7 @@ getSymbol <- function(con, sym, from='', to='') {
   sql <- sprintf("SELECT `quotedate`, `open`, `high`, `low`, `close`, `volume`, `adjustedclose`
                  FROM `a.stockquotes` WHERE `symbol` = '%s' ORDER BY `quotedate`", sym)
   df <- suppressWarnings(dbGetQuery(con, sql))
+  colnames(df)[ncol(df)] <- "adjusted"
   if (nrow(df) < 1) {
     return(FALSE)
   }
@@ -22,14 +23,19 @@ getOS <- function(con, sym, from='', to='') {
 }
 
 # get available Options for a symbol on a given date
-# returns data.frame with OptionSymbol, Type, Strike, Expiration
+# returns list with $UnderlyingPrice and $df data.frame with OptionSymbol, Type, Strike, Expiration
 getOptions <- function(con, sym, date) {
   if (class(date) == "Date") {
     date <- as.character(date)
   }
-  sql <- sprintf("SELECT DISTINCT `OptionSymbol`, `Type`, `Strike`, `Expiration` FROM `o.%s` WHERE `DataDate` = '%s'", sym, date)
+  res <- list()
+  sql <- sprintf("SELECT DISTINCT `UnderlyingPrice`, `OptionSymbol`, `Type`, `Strike`, `Expiration` FROM `o.%s` WHERE `DataDate` = '%s'", sym, date)
   df <- suppressWarnings(dbGetQuery(con, sql))
-  return(df)
+  UnderlyingPrice <- unique(df[,1])
+  if (length(UnderlyingPrice) > 1) {
+    warning(paste("DB Problem: More than one UnderlyingPrice for", sym, ":", UnderlyingPrice))
+  }
+  return(list("UnderlyingPrice"=UnderlyingPrice, "df" = df[,-1]))
 }
 
 # get Prices for a distinct optionsymbol
@@ -50,6 +56,19 @@ getOptionSymbol <- function(con, optsym) {
 
 # returns on the money options for a given symbol and date
 getOTMOptions <- function(con, sym, date) {
-  
+  res <- data.frame()
+  li <- getOptions(con, sym, date)
+  li$df$PriceDiff <- li$UnderlyingPrice - li$df$Strike
+  li$df$ROC <- log(li$df$Strike) - log(li$UnderlyingPrice)
+  li$df$DaysToMaturity <- as.numeric(as.Date(li$df$Expiration) - as.Date(date))
+  for (exp in unique(li$df$Expiration)) {
+    dd <- li$df[li$df$Expiration == exp,]
+    ddp <- dd[dd$Type == "put",]
+    ddc <- dd[dd$Type == "call",]
+    OTMP <- ddp[with(ddp, order(abs(ROC))),][1,]
+    OTMC <- ddc[with(ddc, order(abs(ROC))),][1,]
+    res <- rbind(res, OTMP, OTMC)
+  }
+  return(res)
 }
 
