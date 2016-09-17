@@ -21,6 +21,31 @@ getLastQuoteDate <- function(con, tbl) {
   return(result[1,1])
 }
 
+# remove all entries of one day from given table (table optionstats and stockquotes)
+deleteDayFromTbl <- function(con, tbl, date) {
+  sql <- sprintf("DELETE FROM `a.%s` WHERE `quotedate` = '%s'", tbl, date)
+  result <- dbSendQuery(con, sql)
+}
+
+# removes all entries of one day from given options table
+deleteDayFromOptionTbl <- function(con, tbl, date) {
+  sql <- sprintf("DELETE FROM `%s` WHERE `DataDate` = '%s'", tbl, date)
+  result <- dbSendQuery(con, sql)
+}
+
+# remove all entries of a date-span from given table (table optionstats and stockquotes)
+deleteSpanFromTbl <- function(con, tbl, begin, end) {
+  sql <- sprintf("DELETE FROM `a.%s` WHERE `quotedate` >= '%s' AND `quotedate` <= '%s'", tbl, begin, end)
+  result <- dbSendQuery(con, sql)
+}
+
+# removes all entries of a date-span from given options table
+deleteSpanFromOptionTbl <- function(con, tbl, begin, end) {
+  sql <- sprintf("DELETE FROM `%s` WHERE `DataDate` >= '%s' AND `DataDate` <= '%s'", tbl, begin, end)
+  result <- dbSendQuery(con, sql)
+}
+
+
 # same function as above, but for o.<sym> tables
 getLastOptionQuoteDate <- function(con, sym) {
   sql <- sprintf("SELECT `DataDate` FROM `o.%s` ORDER BY `DataDate` DESC LIMIT 1", sym)

@@ -22,6 +22,13 @@ getOS <- function(con, sym, from='', to='') {
   return(xts(df[,-c(1,2)], order.by=df[,2]))
 }
 
+# returns optionsstats for a symbol on one day
+getOSdate <- function(con, sym, date) {
+  sql <- sprintf("SELECT * FROM `a.optionstats` WHERE `symbol` = '%s' AND `quotedate` = '%s'", sym, date)
+  df <- suppressWarnings(dbGetQuery(con, sql))
+  return (df[,-1])
+}
+
 # get available Options for a symbol on a given date
 # returns list with $UnderlyingPrice and $df data.frame with OptionSymbol, Type, Strike, Expiration
 getOptions <- function(con, sym, date) {
@@ -71,4 +78,13 @@ getOTMOptions <- function(con, sym, date) {
   }
   return(res)
 }
+
+syms <- c("A", "AA", "ABX", "YELP")
+for (sym in syms) {
+  dd <- getOS(con, sym)
+  plot(dd$iv30put, main=paste(sym, "iv30put"))
+}
+
+
+
 
