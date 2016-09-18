@@ -87,6 +87,7 @@ feedOptionsCsvToDb <- function(con, df, symsToFill=c("allSymbols")) {
   }
   
   for (sym in symsToProcess) {
+    cat (sym)
     this.df <- df[df$UnderlyingSymbol == sym, c(2:ncol(df))] # only rows of UnderlyingSymbol, col UnderlyingSymbol is omitted
     # check if a o.SYM table already exists, otherwise create on
     if (!sym %in% symsInDb) {
