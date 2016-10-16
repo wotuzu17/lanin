@@ -1,0 +1,29 @@
+# Option Data Report
+
+Report created @ `r Sys.Date()`.
+
+## Symbols in table a.optionstats
+Kompletter Datensatz vorhanden für `r nrow(symOSTcountDF.complete)` Symbole:
+```{r, echo=FALSE}
+print(symOSTcountDF.complete, row.names=FALSE)
+```
+
+Datensatz enthält Lücken für `r nrow(symOSTcountDF.incomplete)` Symbole:
+```{r, echo=FALSE}
+print(symOSTcountDF.incomplete, row.names=FALSE)
+```
+
+## Symbols in table a.stockquotes
+Kompletter Datensatz vorhanden für `r nrow(symSQTcountDF.complete)` Symbole:
+```{r, echo=FALSE}
+print(symSQTcountDF.complete, row.names=FALSE)
+```
+
+Datensatz enthält Lücken für `r nrow(symSQTcountDF.incomplete)` Symbole:
+```{r, echo=FALSE}
+print(symSQTcountDF.incomplete, row.names=FALSE)
+```
+
+## Missing Symbols
+### Symbols that are in a.optionstats but not in a.stockquotes
+### Symbols that are in a.stockquotes but not in a.optionstats 

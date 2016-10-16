@@ -103,6 +103,23 @@ feedOptionsCsvToDb <- function(con, df, symsToFill=c("allSymbols")) {
   }
 }
 
+# truncate (empty) a.stockquality table in database
+truncateStockQualityTbl <- function(con) {
+  sql <- "TRUNCATE TABLE `a.stockquality`"
+  try(dbSendQuery(con, sql))
+}
+
+# write one line of Stock Quality info for one symbol to db
+feedStockQualityToDb <- function(con, sym, nupsplit, ndownsplit, ntimegaps,
+                                 notfrombegin, nottoend){
+  sql <- sprintf("INSERT INTO `options`.`a.stockquality` 
+                  (`symbol`, `upsplit`, `downsplit`, `timegaps`, 
+                   `notfrombegin`, `nottoend`) VALUES 
+                  ('%s', '%d', '%d', '%d', '%d', '%d')", 
+                   sym, nupsplit, ndownsplit, ntimegaps, notfrombegin, nottoend)
+  try(dbSendQuery(con, sql))
+}
+
 # SQL table scheme for o.SYM table
 # full text has to be: paste0(tblsql[1], "o.SYM", tblsql[2])
 tblsql <- c("CREATE TABLE IF NOT EXISTS `o.", "` (

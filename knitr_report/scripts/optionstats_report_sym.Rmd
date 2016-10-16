@@ -1,0 +1,15 @@
+# `r sym` Option Data Report
+
+Report created @ `r Sys.Date()`.
+
+## Performance Indicators
+
+
+## Price
+```{r, echo=FALSE, fig.width=10, fig.height=6}
+plotPrice(con, sym)
+```
+## Implied volatility
+```{r, echo=FALSE, fig.width=10, fig.height=6}
+plotIV(con, sym)
+```

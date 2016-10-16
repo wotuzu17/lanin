@@ -79,11 +79,23 @@ getOTMOptions <- function(con, sym, date) {
   return(res)
 }
 
-syms <- c("A", "AA", "ABX", "YELP")
-for (sym in syms) {
-  dd <- getOS(con, sym)
-  plot(dd$iv30put, main=paste(sym, "iv30put"))
+# get stock symbols without split and full data coverage
+getCleanStockSymbols <- function(con) {
+  sql <- "SELECT `symbol`
+          FROM `a.stockquality`
+          WHERE `upsplit` =0
+          AND `downsplit` =0
+          AND `timegaps` =0
+          AND `notfrombegin` =0
+          AND `nottoend` =0"
+  return(dbGetQuery(con, sql))
 }
+
+#syms <- c("A", "AA", "ABX", "YELP")
+#for (sym in syms) {
+#  dd <- getOS(con, sym)
+#  plot(dd$iv30put, main=paste(sym, "iv30put"))
+#}
 
 
 
