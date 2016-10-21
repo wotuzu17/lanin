@@ -1,4 +1,5 @@
 # Script to extract training data out of historical stockprices/option data
+Sys.setenv(TZ="UTC")
 
 # load required libraries
 library("zoo")
@@ -23,9 +24,6 @@ processStockQuality <- FALSE # should Stock Quality be measured for all availabl
 con <- dbConnect(MySQL(), user=lanindb$user, password=lanindb$password, dbname=lanindb$db, host=lanindb$host)
 
 availableSyms <- getSymsFromTbl(con, "stockquotes")
-
-# pick random 5 symbols
-mySyms <- sample(availableSyms, 5, replace=TRUE)
 
 # empty stock quality table and fill in new findings
 if (processStockQuality == TRUE) {
@@ -56,5 +54,40 @@ if (processStockQuality == TRUE) {
 }
 
 cleanSyms <- getCleanStockSymbols(con)
+
+# pick random 25 symbols
+mySyms <- sample(cleanSyms, 25, replace=TRUE)
+
+# calculate indicators and prediction for mySyms
+traindf <- data.frame()
+for (i in 1:length(mySyms)) {
+  TS <- getSymbol(con, mySyms[i])
+  tdf <- cbind(returnADX(TS), 
+               EMAParams(TS),
+               returnSlope(TS), 
+               calcBuySellSignal(TS))
+  traindf <- rbind(traindf, as.data.frame(tdf[complete.cases(tdf),]))
+}
+
+# determine traindf Inputs
+coln <- colnames(traindf)
+outp.names <- c("buy", "neutral", "sell")
+inp.names <- coln[!coln %in% outp.names]
+
+# normalize traindf Inputs
+nlist<- normalizeMeanSD(traindf[,inp.names])
+
+# add output to normalized traindf Inputs
+nlist$normdf <- cbind(nlist$normdf, traindf[,outp.names])
+
+# save traindf as table
+DateString <- format(Sys.time(), "%Y%m%d_%H%M")
+write.table(nlist$normdf, 
+            file=paste0(saveTo, "/", DateString, "_normTrainData.csv"), 
+            row.names=FALSE)
+
+write.table(meanStToDf(nlist$colmean, nlist$colsd),
+            file=paste0(saveTo, "/", DateString, "_normMeanSd.csv"),
+            row.names=FALSE)
 
 dbDisconnect(con)

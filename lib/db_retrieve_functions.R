@@ -88,7 +88,7 @@ getCleanStockSymbols <- function(con) {
           AND `timegaps` =0
           AND `notfrombegin` =0
           AND `nottoend` =0"
-  return(dbGetQuery(con, sql))
+  return(dbGetQuery(con, sql)[,1])
 }
 
 #syms <- c("A", "AA", "ABX", "YELP")
