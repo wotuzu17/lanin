@@ -75,7 +75,13 @@ calcBuySellSignal <- function(TS, n=5, ATRn=20, method="worst1") {
   colnames(sell) <- "sell"
   neutral <- !(buy | sell)
   colnames(neutral) <- "neutral"
-  return(cbind(buy, neutral, sell))
+  pos <- fCl- Cl(TS) > 0
+  colnames(pos) <- "pos"
+  neg <- !pos
+  colnames(neg) <- "neg"
+  y <- pos + 1
+  colnames(y) <- "y"
+  return(cbind(buy, neutral, sell, pos, neg, y))
 }
 
 # this function returns a one-column xts object containing the average true range. 

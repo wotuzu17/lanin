@@ -1,4 +1,4 @@
-# skript to research volatility behaviour
+# script to research volatility behaviour
 
 library(xts)
 library(TTR)

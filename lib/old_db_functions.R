@@ -103,7 +103,7 @@ plotPCOI <- function(con, sym) {
 }
 
 # plot Put and Call Volume
-plotPCOI <- function(con, sym) {
+plotPCV <- function(con, sym) {
   res <- getOST(con, sym)
   dd <- melt(res[,c("quotedate", "callvol", "putvol")], id.vars="quotedate")
   ggplot(dd, aes(quotedate, value)) + geom_point(aes(color=variable)) +
@@ -127,11 +127,4 @@ plotIV <- function(con, sym, periods=c(60)) {
 # plot stock price
 plotPrice <- function(con, sym) {
   chartSeries(getSQ(con, sym, as.xts=TRUE))
-}
-
-# get IV summary
-# delivers current IV, H/L/Median IV of last n calendardays
-getIVsummary <- function(con, sym, n=60, periods=c(60), now=Sys.Date()) {
-  # calculate back n calendar days from now
-  then <- now - n
 }

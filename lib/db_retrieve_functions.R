@@ -91,12 +91,6 @@ getCleanStockSymbols <- function(con) {
   return(dbGetQuery(con, sql)[,1])
 }
 
-#syms <- c("A", "AA", "ABX", "YELP")
-#for (sym in syms) {
-#  dd <- getOS(con, sym)
-#  plot(dd$iv30put, main=paste(sym, "iv30put"))
-#}
-
 
 
 

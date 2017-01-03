@@ -103,6 +103,25 @@ feedOptionsCsvToDb <- function(con, df, symsToFill=c("allSymbols")) {
   }
 }
 
+# creates structure of a.stockquality table
+createStockQualityTbl <- function(con) {
+  sql <- "CREATE TABLE IF NOT EXISTS `a.stockquality` (
+    `symbol` varchar(10) NOT NULL,
+    `upsplit` int(11) NOT NULL,
+    `downsplit` int(11) NOT NULL,
+    `timegaps` int(11) NOT NULL,
+    `notfrombegin` tinyint(1) NOT NULL,
+    `nottoend` tinyint(1) NOT NULL,
+    PRIMARY KEY (`symbol`)
+  ) ENGINE=MyISAM DEFAULT CHARSET=ascii"
+  try(dbSendQuery(con, sql))
+}
+
+dropStockQualityTbl <- function(con) {
+  sql <- "DROP TABLE `a.stockquality`"
+  try(dbSendQuery(con, sql))
+}
+
 # truncate (empty) a.stockquality table in database
 truncateStockQualityTbl <- function(con) {
   sql <- "TRUNCATE TABLE `a.stockquality`"
