@@ -41,7 +41,7 @@ opt <- parse_args(OptionParser(option_list=option_list))
 # opt$rewrite_table
 # opt$help
 
-referenceSym <- "SPY"  # assumind complete data for this symbol
+referenceSym <- "SPY"  # assuming complete data for this symbol
 
 # process each symbol
 processAllSyms <- function(con, mySyms) {

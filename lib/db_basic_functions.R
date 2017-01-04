@@ -103,6 +103,7 @@ feedOptionsCsvToDb <- function(con, df, symsToFill=c("allSymbols")) {
   }
 }
 
+######### related to stockquality table ##############################
 # creates structure of a.stockquality table
 createStockQualityTbl <- function(con) {
   sql <- "CREATE TABLE IF NOT EXISTS `a.stockquality` (
@@ -117,6 +118,7 @@ createStockQualityTbl <- function(con) {
   try(dbSendQuery(con, sql))
 }
 
+# delete (drop) entire a.stockquality table
 dropStockQualityTbl <- function(con) {
   sql <- "DROP TABLE `a.stockquality`"
   try(dbSendQuery(con, sql))
@@ -138,6 +140,54 @@ feedStockQualityToDb <- function(con, sym, nupsplit, ndownsplit, ntimegaps,
                    sym, nupsplit, ndownsplit, ntimegaps, notfrombegin, nottoend)
   try(dbSendQuery(con, sql))
 }
+######################################################################
+
+######### related to optionstatsquality table ########################
+# creates structure of a.optionstatsquality table
+createOSQualityTbl <- function(con) {
+  sql <- "CREATE TABLE IF NOT EXISTS `a.optionstatsquality` (
+    `symbol` varchar(10) NOT NULL,
+    `iv30zeros` int(11) NOT NULL,
+    `iv60zeros` int(11) NOT NULL,
+    `iv90zeros` int(11) NOT NULL,
+    `iv120zeros` int(11) NOT NULL,
+    `iv150zeros` int(11) NOT NULL,
+    `iv180zeros` int(11) NOT NULL,
+    `iv360zeros` int(11) NOT NULL,
+    `timegaps` int(11) NOT NULL,
+    `notfrombegin` tinyint(1) NOT NULL,
+    `nottoend` tinyint(1) NOT NULL,
+    PRIMARY KEY (`symbol`)
+  ) ENGINE=MyISAM DEFAULT CHARSET=ascii"
+  try(dbSendQuery(con, sql))
+}
+
+# delete (drop) entire a.optionstatsquality table
+dropOSQualityTbl <- function(con) {
+  sql <- "DROP TABLE `a.optionstatsquality`"
+  try(dbSendQuery(con, sql))
+}
+
+# truncate (empty) a.optionstatsquality table in database
+truncateOSQualityTbl <- function(con) {
+  sql <- "TRUNCATE TABLE `a.optionstatsquality`"
+  try(dbSendQuery(con, sql))
+}
+
+# write one line of optionstats quality info for one symbol to db
+# nzeros is expected to be a vector of 7 elements
+feedOSQualityToDb <- function(con, sym, nzeros, ntimegaps,
+                                 notfrombegin, nottoend){
+  sql <- sprintf("INSERT INTO `options`.`a.optionstatsquality` 
+                  (`symbol`, `iv30zeros`, `iv60zeros`, 
+                   `iv90zeros`, `iv120zeros`, `iv150zeros`, `iv180zeros`, 
+                   `iv360zeros`, `timegaps`, `notfrombegin`, `nottoend`) VALUES 
+                  ('%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d')", 
+                 sym, nzeros[1], nzeros[2], nzeros[3], nzeros[4], nzeros[5], 
+                 nzeros[6], nzeros[7], ntimegaps, notfrombegin, nottoend)
+  try(dbSendQuery(con, sql))
+}
+######################################################################
 
 # SQL table scheme for o.SYM table
 # full text has to be: paste0(tblsql[1], "o.SYM", tblsql[2])
