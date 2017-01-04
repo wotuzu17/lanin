@@ -31,12 +31,39 @@ returnSlope <- function(TS, n=200, slash=.1) {
 }
 
 # returns ADX values
+#DIp       DIn      ADX       dADX 
 returnADX <- function(TS, ADXn=14) {
   TSA <- ADX(TS, n=ADXn)
   TSA[,2] <- TSA[,2] *(-1)
   TSA <- cbind(TSA, diff(TSA[,4]))
   colnames(TSA)[ncol(TSA)] <- "dADX"
   return(TSA[,c(1,2,4,5)])
+}
+
+# returns ADX values
+#  ADX        dADX      DInorm
+returnADX1 <- function(TS, ADXn=14) {
+  TSA <- ADX(TS, n=ADXn)
+  TSA <- cbind(TSA, diff(TSA[,"ADX"]))
+  colnames(TSA)[ncol(TSA)] <- "dADX"
+  TSA <- cbind(TSA, (TSA[,1]-TSA[,2])/(TSA[,1] + TSA[,2]))
+  colnames(TSA)[ncol(TSA)] <- "DInorm"
+  return(TSA[,c(4,5,6)])
+}
+
+# calulates maximum up/down movement in window from t+nl to t+nh periods
+# the amount of the movement is measured in terms of ATR[ATRn] periods
+calcPriceShifts <- function(TS, nl=1, nh=10, ATRn=20) {
+  # calculate ATR of Close first
+  ATR <- qATR(TS, n=ATRn)
+  lagCl <- lag(Cl(TS), k=c(nl*(-1):(nh*-1)))
+  max <- reclass(apply(lagCl, 1, max), lagCl)
+  min <- reclass(apply(lagCl, 1, min), lagCl)
+  adv <- (max - Cl(TS))/ATR
+  colnames(adv) <- sprintf("adv_%d_%d", nl, nh)
+  dec <- (Cl(TS)-min)/ATR
+  colnames(dec) <- sprintf("dec_%d_%d", nl, nh)
+  return(cbind(adv, dec))
 }
 
 # on a known time series, calc buy and sell opportunities
@@ -123,5 +150,3 @@ meanStToDf <- function(colmean, colsd) {
   colnames(df) <- c("colmean", "colsd")
   return(t(df))
 }
-
-# ToDo: Write reverse function of meanStToDf

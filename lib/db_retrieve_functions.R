@@ -91,6 +91,22 @@ getCleanStockSymbols <- function(con) {
   return(dbGetQuery(con, sql)[,1])
 }
 
+# get optionstats symbols without zero IV and full data coverage
+getCleanOSSymbols <- function(con) {
+  sql <- "SELECT `symbol`
+          FROM `a.optionstatsquality`
+          WHERE `iv30zeros` =0
+          AND `iv60zeros` =0
+          AND `iv90zeros` =0
+          AND `iv120zeros` =0
+          AND `iv150zeros` =0
+          AND `iv180zeros` =0
+          AND `iv360zeros` =0
+          AND `timegaps` =0
+          AND `notfrombegin` =0
+          AND `nottoend` =0"
+  return(dbGetQuery(con, sql)[,1])
+}
 
 
 
