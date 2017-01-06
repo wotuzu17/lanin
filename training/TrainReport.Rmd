@@ -1,0 +1,25 @@
+# Lanin Training Report
+## Training (Startup) Parameters
+The training process was started at `r format(start.time, "%Y-%m-%d_%H-%M")`.
+
+The startup Parameters are:
+```{r, comment=NA}
+opt
+```
+
+## Training and Validation Symbols
+These Symbols were used for training:
+```{r, comment=NA}
+set1Syms
+set2Syms
+vdSyms
+```
+
+## Training Set Generation
+Input Variables: `r x.remark`
+
+Output Variables: `r y.remark`
+
+## Training Algorithm
+Training Algorithm: `r a.remark`
+
