@@ -84,7 +84,7 @@ xdf <- combineSolver(makeTrainDF(testSyms[3]))
 registerDoMC(cores=detectCores()-1) # leave one core for the OS
 
 # random forest training
-fitControl <- trainControl(method = "cv", number = 3, allowParallel = TRUE)
+fitControl <- trainControl(method = "cv", number = detectCores()-1, allowParallel = TRUE)
 start.time <- Sys.time()
 rfFit <- train(decclass ~ ., data=train, method="rf", trControl=fitControl)
 time.rfFit <- Sys.time() - start.time

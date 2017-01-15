@@ -1,9 +1,9 @@
 cat("Doing X.\n")
 # Remark for this version of input features generation:
-x.remark <- "First toy model. Input features: ADX, EMA50, EMA9."
+x.remark <- "Second toy model. Input features: ADX, SMA50, SMA9. SMA instead of EMA"
 params<- list("ADXn" = 14,
-              "EMA1n" = 50,
-              "EMA2n" = 9,
+              "SMA1n" = 50,
+              "SMA2n" = 9,
               "nl" = 1,
               "nh" = 10,
               "ATRn" = 20)
@@ -16,8 +16,8 @@ makeTrainRAW <- function(con, syms, p) {
   for (sym in syms) {
     TS <- getSymbol(con, sym)
     Xlist[[sym]] <- cbind(returnADX1(TS, p$ADXn), 
-                          EMAParams(TS, p$EMA1n),
-                          EMAParams(TS, p$EMA2n),
+                          SMAParams(TS, p$SMA1n),
+                          SMAParams(TS, p$SMA2n),
                           calcPriceShifts(TS, nl=p$nl, nh=p$nh, ATRn=p$ATRn))
   }
   return(Xlist)

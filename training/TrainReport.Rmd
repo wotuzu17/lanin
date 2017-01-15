@@ -16,10 +16,42 @@ vdSyms
 ```
 
 ## Training Set Generation
+### X
 Input Variables: `r x.remark`
 
+Example of raw data set:
+```{r, comment=NA}
+head(set1.RAW[[1]][complete.cases(set1.RAW[[1]])])
+```
+
+### Y
 Output Variables: `r y.remark`
+
+Boundaries:
+```{r, comment=NA}
+set1.adv.boundaries
+set2.adv.boundaries
+vd.adv.boundaries 
+
+set1.dec.boundaries
+set2.dec.boundaries
+vd.dec.boundaries 
+```
+
+### Schema of Training Data Set
+Example:
+```{r, comment=NA}
+head(trainDF1a.t)
+```
 
 ## Training Algorithm
 Training Algorithm: `r a.remark`
 
+### Confusion Matrices
+```{r, comment=NA, echo=FALSE}
+for (i in 1:length(cm)) {
+  cat(paste(names(cm)[i], ":\n"))
+  print(cm[[i]])
+  cat("-----------------------------------------------------------\n\n")
+}
+```

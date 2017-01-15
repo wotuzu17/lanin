@@ -10,6 +10,16 @@ EMAParams <- function(TS, n=50) {
   return(cbind(C_EMA, dEMA))
 }
 
+# calculates SMA
+SMAParams <- function(TS, n=50) {
+  SMA <- SMA(Cl(TS), n=n)
+  dSMA <- diff(SMA)
+  colnames(dSMA) <- paste0("dSMA",n)
+  C_SMA <- (Cl(TS) -SMA[,1]) / Cl(TS)
+  colnames(C_SMA) <- paste0("C2SMA", n)
+  return(cbind(C_SMA, dSMA))
+}
+
 # returns linear model coefficients of ordered returns
 returnSlope <- function(TS, n=200, slash=.1) {
   TS <- cbind(TS, "d"=NA, "k"=NA, "dn"=NA, "up"=NA)

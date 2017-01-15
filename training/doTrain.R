@@ -7,8 +7,8 @@
 
 Sys.setenv(TZ="UTC")
 scriptname <- "doTrain.R" # for logging
-start.time <- Sys.time()
-cat (paste(start.time, scriptname, "started\n"))
+global.start.time <- Sys.time()
+cat (paste(global.start.time, scriptname, "started\n"))
 
 # load required libraries
 suppressPackageStartupMessages(library(optparse))
@@ -21,6 +21,7 @@ suppressPackageStartupMessages(library(RMySQL))
 suppressPackageStartupMessages(library(lattice))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(caret))
+suppressPackageStartupMessages(library(randomForest))
 suppressPackageStartupMessages(library(foreach))  # required by doMC
 suppressPackageStartupMessages(library(iterators))# required by doMC
 suppressPackageStartupMessages(library(parallel)) # required by doMC
@@ -44,7 +45,9 @@ option_list <- list(
   make_option(c("-y", "--yversion"), type="integer", default=0,
               help="Version to build outcome variable [default %default]", metavar="number"),
   make_option(c("-a", "--aversion"), type="integer", default=0,
-              help="Machine Learning Algorithm to use [default %default]", metavar="number"),  
+              help="Machine Learning Algorithm to use [default %default]", metavar="number"),
+  make_option(c("-r", "--rate"), type="integer", default=5,
+              help="Use 1/r training rows out of all available rows. Greater r = shorter training time. [default %default]", metavar="number"),  
   make_option(c("-s", "--seed"), type="integer", default=123,
               help="Random generator seed [default %default]", metavar="number"))
 
@@ -52,8 +55,19 @@ opt <- parse_args(OptionParser(option_list=option_list))
 cat ("The script was called with these parameters:\n")
 opt
 
+# for debug
+if (opt$xversion == 0) {
+  opt<-list()
+  opt$xversion <- 1
+  opt$yversion <- 1
+  opt$aversion <- 1
+  opt$rate <- 10
+  opt$seed <- 123
+}
+
+
 # connect to database (keys are in secret file)
-cat (paste("connecting to database on",lanindb$host, ".\n"))
+cat (paste0("connecting to database on ",lanindb$host, ".\n"))
 con <- dbConnect(MySQL(), user=lanindb$user, password=lanindb$password, dbname=lanindb$db, host=lanindb$host)
 
 # extract cleanest symbols out of db
@@ -78,7 +92,6 @@ source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/y_%d.R", opt
 # train with given algo
 source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/a_%d.R", opt$aversion))
 
-
 dbDisconnect(con)
 #############################################################################
 
@@ -87,9 +100,22 @@ knit2html("/home/voellenk/lanin_workdir/lanin/training/TrainReport.Rmd",
           paste0(knitrReportDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
           "_x_", opt$xversion,
           "_y_", opt$yversion,
+          "_a_", opt$aversion,
+          "_r_", opt$rate,
           "_seed_", opt$seed,
           ".html"))
 
-stop.time <- Sys.time()
-cat (paste(stop.time, scriptname, "stopped, duration:", round(as.numeric(difftime(stop.time, start.time, units="mins")),1), "mins\n"))
+
+# store fit models and confusion matrices for further inspection
+#save(fit, cm, file=paste0(trainDataDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
+#                          "_x_", opt$xversion,
+ #                         "_y_", opt$yversion,
+  #                        "_a_", opt$aversion,
+   #                       "_r_", opt$rate,
+    #                      "_seed_", opt$seed,
+     #                     ".RData"))
+
+global.stop.time <- Sys.time()
+cat (paste(global.stop.time, scriptname, "stopped, duration:", 
+           round(as.numeric(difftime(global.stop.time, global.start.time, units="mins")),1), "mins\n"))
 cat ("----------------------------------------------------------------------\n")
