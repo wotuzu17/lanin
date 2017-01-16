@@ -20,6 +20,15 @@ SMAParams <- function(TS, n=50) {
   return(cbind(C_SMA, dSMA))
 }
 
+# calculates RSI
+RSIParams <- function(TS, n, SMAn) {
+  RSI <- RSI(Cl(TS), n=n)
+  colnames(RSI) <- paste0("RSI",n)
+  dSMARSI <- diff(SMA(RSI, n=SMAn))
+  colnames(dSMARSI) <- paste0("dRSI",n,"_",SMAn)
+  return(cbind(RSI, dSMARSI))
+}
+
 # returns linear model coefficients of ordered returns
 returnSlope <- function(TS, n=200, slash=.1) {
   TS <- cbind(TS, "d"=NA, "k"=NA, "dn"=NA, "up"=NA)

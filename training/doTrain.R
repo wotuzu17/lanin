@@ -60,7 +60,7 @@ if (opt$xversion == 0) {
   opt<-list()
   opt$xversion <- 1
   opt$yversion <- 1
-  opt$aversion <- 1
+  opt$aversion <- 3
   opt$rate <- 10
   opt$seed <- 123
 }
@@ -107,13 +107,13 @@ knit2html("/home/voellenk/lanin_workdir/lanin/training/TrainReport.Rmd",
 
 
 # store fit models and confusion matrices for further inspection
-#save(fit, cm, file=paste0(trainDataDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
-#                          "_x_", opt$xversion,
- #                         "_y_", opt$yversion,
-  #                        "_a_", opt$aversion,
-   #                       "_r_", opt$rate,
-    #                      "_seed_", opt$seed,
-     #                     ".RData"))
+save(cm, file=paste0(trainDataDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
+                          "_x_", opt$xversion,
+                          "_y_", opt$yversion,
+                          "_a_", opt$aversion,
+                          "_r_", opt$rate,
+                          "_seed_", opt$seed,
+                          ".RData"))
 
 global.stop.time <- Sys.time()
 cat (paste(global.stop.time, scriptname, "stopped, duration:", 
