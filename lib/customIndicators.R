@@ -1,5 +1,6 @@
 # library of custom indicators
 
+########## stock price indicator functions ##########################
 # calculates EMA
 EMAParams <- function(TS, n=50) {
   EMA <- EMA(Cl(TS), n=n)
@@ -29,26 +30,6 @@ RSIParams <- function(TS, n, SMAn) {
   return(cbind(RSI, dSMARSI))
 }
 
-# returns linear model coefficients of ordered returns
-returnSlope <- function(TS, n=200, slash=.1) {
-  TS <- cbind(TS, "d"=NA, "k"=NA, "dn"=NA, "up"=NA)
-  ret <- ROC(Cl(TS))
-  slashn <- floor(n*slash)
-  for (i in n:nrow(TS)) {
-    retw <- as.vector(ret[(i-n+1):i])            # return window
-    ordretw <- retw[order(retw, na.last=NA)]   # ordered return window
-    slordretw <- ordretw[slashn:(length(ordretw)-slashn)] # slashed ordered return window
-    ind <- index(slordretw)
-    normind <- ind/mean(ind)-1                 # normalized index from -1 to 1
-    model <- lm(slordretw ~ normind)           # linear model
-    TS[i, "d"] <- model$coefficients[1]        # 1=intercept
-    TS[i, "k"] <- model$coefficients[2]        # 2=k
-    TS[i, "dn"] <- quantile(ordretw[1:slashn],.25) # .25 quantile of slashed lower band
-    TS[i, "up"] <- quantile(ordretw[(length(ordretw)-slashn):length(ordretw)],.75) # .75 quantile of slashed upper band
-  }
-  return(TS[,c("d", "k", "dn", "up")])
-}
-
 # returns ADX values
 #DIp       DIn      ADX       dADX 
 returnADX <- function(TS, ADXn=14) {
@@ -69,6 +50,24 @@ returnADX1 <- function(TS, ADXn=14) {
   colnames(TSA)[ncol(TSA)] <- "DInorm"
   return(TSA[,c(4,5,6)])
 }
+
+########## option stats indicator functions ##########################
+
+# put to call ratio
+putcallratio <- function(OS) {
+  res <- log(OS$callvol+1) - log(OS$putvol+1)
+  colnames(res) <- "pcr"
+  return(res)
+}
+
+# smoothed put to call ratio (using EMA [n] of callvol and putvol)
+smoothputcallratio <- function(OS, n) {
+  res <- log(EMA(OS$callvol, n=n)+1) - log(EMA(OS$putvol, n=n)+1)
+  colnames(res) <- paste0("pcr_", n)
+  return(res)
+}
+
+########## outcome functions #########################################
 
 # calulates maximum up/down movement in window from t+nl to t+nh periods
 # the amount of the movement is measured in terms of ATR[ATRn] periods
@@ -137,6 +136,8 @@ qATR <- function (TS, n=20) {
   return(retvar)
 }
 
+######## not prefered functions ################################
+
 # normalize training set by mean and standard deviation
 # normx <- (x - Mean) / SD
 # returns a list of:
@@ -168,4 +169,24 @@ meanStToDf <- function(colmean, colsd) {
   df <- cbind(as.data.frame(colmean), as.data.frame(colsd))
   colnames(df) <- c("colmean", "colsd")
   return(t(df))
+}
+
+# returns linear model coefficients of ordered returns
+returnSlope <- function(TS, n=200, slash=.1) {
+  TS <- cbind(TS, "d"=NA, "k"=NA, "dn"=NA, "up"=NA)
+  ret <- ROC(Cl(TS))
+  slashn <- floor(n*slash)
+  for (i in n:nrow(TS)) {
+    retw <- as.vector(ret[(i-n+1):i])            # return window
+    ordretw <- retw[order(retw, na.last=NA)]   # ordered return window
+    slordretw <- ordretw[slashn:(length(ordretw)-slashn)] # slashed ordered return window
+    ind <- index(slordretw)
+    normind <- ind/mean(ind)-1                 # normalized index from -1 to 1
+    model <- lm(slordretw ~ normind)           # linear model
+    TS[i, "d"] <- model$coefficients[1]        # 1=intercept
+    TS[i, "k"] <- model$coefficients[2]        # 2=k
+    TS[i, "dn"] <- quantile(ordretw[1:slashn],.25) # .25 quantile of slashed lower band
+    TS[i, "up"] <- quantile(ordretw[(length(ordretw)-slashn):length(ordretw)],.75) # .75 quantile of slashed upper band
+  }
+  return(TS[,c("d", "k", "dn", "up")])
 }

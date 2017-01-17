@@ -1,13 +1,13 @@
 cat("Doing X.\n")
 # Remark for this version of input features generation:
-x.remark <- "Third toy model. Input features: ADX, SMA50, SMA9, RSI14"
+x.remark <- "Input features: ADX, SMA50, SMA9, RSI14. Output: from 1 to 30 periods in future"
 params<- list("ADXn" = 14,
               "SMA1n" = 50,
               "SMA2n" = 9,
               "RSIn" = 14,
               "dRSISMAn" = 3,
               "nl" = 1,
-              "nh" = 20,
+              "nh" = 30,
               "ATRn" = 20)
 name.adv.col <- paste0("adv_", params$nl, "_", params$nh)
 name.dec.col <- paste0("dec_", params$nl, "_", params$nh)
