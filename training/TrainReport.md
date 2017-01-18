@@ -1,6 +1,6 @@
 # Lanin Training Report
 ## Training (Startup) Parameters
-The training process was started at 2017-01-16_21-50.
+The training process was started at 2017-01-17_20-55.
 
 The startup Parameters are:
 
@@ -10,10 +10,10 @@ opt
 
 ```
 $xversion
-[1] 3
+[1] 6
 
 $yversion
-[1] 2
+[1] 1
 
 $aversion
 [1] 2
@@ -22,7 +22,7 @@ $rate
 [1] 5
 
 $seed
-[1] 234
+[1] 666
 
 $help
 [1] FALSE
@@ -36,24 +36,24 @@ set1Syms
 ```
 
 ```
-  [1] "MYL"   "WM"    "FCX"   "MPEL"  "EMC"   "AMGN"  "GDX"   "LVS"  
-  [9] "GG"    "BRK.B" "BBT"   "MET"   "KRE"   "ERX"   "SWKS"  "USB"  
- [17] "NAV"   "DFS"   "VALE"  "EMR"   "SNE"   "STX"   "STT"   "BK"   
- [25] "BIIB"  "IWM"   "VMW"   "EWZ"   "VRTX"  "NEE"   "ILMN"  "QCOM" 
- [33] "PBR"   "CSCO"  "GLW"   "DOW"   "STI"   "XLF"   "WY"    "VZ"   
- [41] "JCI"   "NEM"   "CAT"   "LEN"   "LLY"   "CLF"   "AEP"   "BMY"  
- [49] "BAC"   "WSM"   "GSK"   "NBR"   "XHB"   "JBLU"  "SYMC"  "LMT"  
- [57] "BA"    "M"     "MAT"   "WFC"   "BG"    "GT"    "DISH"  "MCD"  
- [65] "RL"    "FLR"   "USO"   "KEY"   "AXL"   "TSO"   "COP"   "NRG"  
- [73] "PNRA"  "HOG"   "SYK"   "PFE"   "QQQ"   "DANG"  "DAL"   "TXN"  
- [81] "DVN"   "HL"    "COF"   "PXD"   "SPY"   "AKS"   "BX"    "SLB"  
- [89] "GNW"   "GPS"   "GM"    "RUT"   "BID"   "AET"   "CCJ"   "SLV"  
- [97] "AMTD"  "JNPR"  "MJN"   "PCLN"  "XLI"   "ETN"   "TWX"   "MSFT" 
-[105] "VWO"   "AU"    "SWK"   "DD"    "CTL"   "CMI"   "TOT"   "CLNE" 
-[113] "TSLA"  "AZO"   "NFX"   "LXK"   "ISRG"  "GE"    "AKAM"  "JCP"  
-[121] "KLAC"  "T"     "DHI"   "SIRI"  "TIF"   "OEF"   "IBM"   "CNQ"  
-[129] "NUAN"  "HP"    "UTX"   "XOM"   "MT"    "GOLD"  "UNH"   "AUY"  
-[137] "EWW"   "NSC"   "TRV"   "ACN"  
+  [1] "WDC"   "NAV"   "EXPE"  "OXY"   "TSL"   "ATVI"  "SO"    "MGM"  
+  [9] "AMD"   "WSM"   "UPS"   "RIO"   "RRC"   "ETN"   "SU"    "ETFC" 
+ [17] "QQQ"   "VRTX"  "CDE"   "NVDA"  "SWN"   "BRK.B" "AUY"   "FSLR" 
+ [25] "M"     "KEY"   "BCS"   "PBR"   "HAL"   "MS"    "VALE"  "LRCX" 
+ [33] "FCX"   "XLY"   "LXK"   "CTL"   "XOP"   "DANG"  "COF"   "DVN"  
+ [41] "NOV"   "CIEN"  "CSCO"  "FLR"   "VZ"    "CLNE"  "RGLD"  "NSC"  
+ [49] "CLF"   "RL"    "USB"   "BX"    "ITUB"  "CBS"   "PRU"   "ZION" 
+ [57] "LMT"   "UAL"   "ACN"   "MU"    "AXL"   "ECA"   "WFT"   "HUN"  
+ [65] "RIG"   "LEN"   "ESRX"  "RF"    "HUM"   "FXY"   "CMG"   "EMR"  
+ [73] "AKS"   "XLF"   "STX"   "MET"   "AXP"   "HIG"   "AU"    "AVP"  
+ [81] "APC"   "FFIV"  "DO"    "CCI"   "GSK"   "A"     "KMB"   "T"    
+ [89] "BHP"   "COH"   "AMAT"  "TOT"   "BA"    "MCD"   "SIRI"  "DIA"  
+ [97] "NLY"   "XME"   "PFE"   "EWZ"   "URBN"  "MAT"   "HD"    "HES"  
+[105] "CAR"   "MPEL"  "WY"    "TIF"   "LVS"   "AMTD"  "IBM"   "CMCSA"
+[113] "APA"   "BID"   "BSX"   "GLD"   "DISH"  "GG"    "QCOM"  "TEVA" 
+[121] "XLE"   "MSI"   "GDX"   "SCHW"  "PEP"   "WLL"   "WFC"   "EWW"  
+[129] "CAG"   "EMC"   "NRG"   "BAC"   "CIT"   "AEM"   "TTWO"  "PAAS" 
+[137] "EXC"   "GT"    "ESV"   "SPG"  
 ```
 
 ```r
@@ -61,24 +61,20 @@ set2Syms
 ```
 
 ```
-  [1] "ABX"   "ADBE"  "ADI"   "ADM"   "AEM"   "AEO"   "AFL"   "AG"   
-  [9] "AGO"   "AIG"   "ALL"   "AMAT"  "AMD"   "AMT"   "APC"   "ATVI" 
- [17] "AVP"   "AXP"   "BBBY"  "BHI"   "BHP"   "BSX"   "CA"    "CAG"  
- [25] "CAR"   "CCI"   "CDE"   "CHK"   "CHRW"  "CIEN"  "CIT"   "CMCSA"
- [33] "CMG"   "CPB"   "CREE"  "CTXS"  "CVX"   "CX"    "CY"    "DE"   
- [41] "DECK"  "DIA"   "DO"    "DRI"   "EEM"   "EFA"   "ESRX"  "ETFC" 
- [49] "EWT"   "F"     "FDX"   "FFIV"  "FITB"  "FSLR"  "FXE"   "FXY"  
- [57] "GIS"   "GLD"   "GS"    "HAL"   "HD"    "HON"   "HUM"   "HUN"  
- [65] "IAG"   "IBB"   "INTC"  "IP"    "JBL"   "JNJ"   "JPM"   "JWN"  
- [73] "KGC"   "KSS"   "LRCX"  "LYB"   "MAS"   "MDY"   "MGM"   "MMM"  
- [81] "MRK"   "MS"    "MSI"   "MU"    "NE"    "NGD"   "NTES"  "OXY"  
- [89] "PAAS"  "PAYX"  "PEP"   "PG"    "PHM"   "POT"   "RAX"   "RCL"  
- [97] "RF"    "RHT"   "RIG"   "RIO"   "RRC"   "RSX"   "RTN"   "SCCO" 
-[105] "SCHW"  "SCO"   "SLW"   "SO"    "SOHU"  "SPX"   "SU"    "TCK"  
-[113] "TEVA"  "TGT"   "TLT"   "TOL"   "TSL"   "TSN"   "TTWO"  "UPS"  
-[121] "URBN"  "USG"   "VLO"   "WHR"   "WIN"   "WLL"   "WMB"   "WMT"  
-[129] "WYNN"  "XLB"   "XLE"   "XLNX"  "XLU"   "XLV"   "XME"   "XRX"  
-[137] "YHOO"  "YUM"   "ZION" 
+  [1] "ABX"  "ADBE" "ADSK" "AEO"  "AEP"  "AIG"  "AKAM" "ALL"  "AMT"  "BBBY"
+ [11] "BHI"  "BIIB" "BK"   "BMY"  "CA"   "CAT"  "CCJ"  "CHK"  "CHRW" "CI"  
+ [21] "COP"  "CTXS" "CVS"  "CVX"  "CX"   "CY"   "DAL"  "DD"   "DHI"  "DOW" 
+ [31] "DRI"  "EEM"  "EFA"  "ERX"  "EUO"  "EWT"  "EWY"  "FDX"  "FITB" "FXE" 
+ [41] "FXI"  "GLW"  "GM"   "GME"  "GNW"  "GOLD" "GPS"  "GRMN" "GS"   "HL"  
+ [51] "HOG"  "HON"  "HP"   "HRB"  "IBB"  "ILMN" "ISRG" "IWM"  "IYR"  "JCI" 
+ [61] "JCP"  "JNPR" "JWN"  "KBH"  "KLAC" "KSS"  "LLY"  "LUV"  "MAR"  "MBI" 
+ [71] "MDT"  "MDY"  "MJN"  "MMM"  "MO"   "MOS"  "MSFT" "MT"   "MYL"  "NBR" 
+ [81] "NE"   "NEE"  "NEM"  "NFX"  "NGD"  "NTAP" "NTES" "NUE"  "ORCL" "PAYX"
+ [91] "PCLN" "PG"   "PM"   "PNC"  "PNRA" "POT"  "PXD"  "RAX"  "RDN"  "RHT" 
+[101] "RSX"  "RTN"  "SCO"  "SHLD" "SLW"  "SNE"  "SOHU" "SPLS" "SSRI" "STT" 
+[111] "SWK"  "SWKS" "SYK"  "SYMC" "SYNA" "TCK"  "TEX"  "TGT"  "TLT"  "TOL" 
+[121] "TRV"  "TSLA" "TWX"  "TXT"  "USG"  "UTX"  "VMW"  "VWO"  "WIN"  "WM"  
+[131] "WMT"  "WNR"  "X"    "XLK"  "XLNX" "XLV"  "XRX"  "YHOO" "YUM" 
 ```
 
 ```r
@@ -86,18 +82,19 @@ vdSyms
 ```
 
 ```
- [1] "SINA" "SSRI" "ADSK" "SPG"  "APA"  "NUE"  "WFT"  "RDN"  "WDC"  "ECA" 
-[11] "MBI"  "MAR"  "MO"   "XLK"  "A"    "HRB"  "ESV"  "XLY"  "BKS"  "TEX" 
-[21] "KMB"  "MDT"  "SYY"  "MRVL" "IYR"  "FXI"  "ORCL" "CI"   "SPLS" "SYNA"
-[31] "MON"  "CVS"  "CBS"  "NVDA" "KBH"  "NOV"  "NTAP" "BP"   "ITUB" "EWY" 
-[41] "LUV"  "SWN"  "SHLD" "CNX"  "WNR"  "PNC"  "COH"  "WU"   "LOW"  "BCS" 
-[51] "TXT"  "EXPE" "X"    "PRU"  "XOP"  "BIDU" "ARMH" "GRMN" "PM"   "MOS" 
-[61] "EUO"  "HES"  "UAL"  "RGLD" "GME"  "EXC"  "NLY"  "HIG"  "XLP" 
+ [1] "SPX"  "CMI"  "XLU"  "CNQ"  "GE"   "RUT"  "XLI"  "KGC"  "ADI"  "DFS" 
+[11] "SLV"  "ADM"  "AZO"  "BP"   "CNX"  "SPY"  "AG"   "TSN"  "JBL"  "INTC"
+[21] "WMB"  "MON"  "XLB"  "BKS"  "SLB"  "DE"   "AGO"  "WU"   "LOW"  "STI" 
+[31] "IAG"  "GIS"  "XOM"  "JBLU" "MRK"  "IP"   "DECK" "SYY"  "RCL"  "KRE" 
+[41] "CREE" "JNJ"  "BBT"  "TXN"  "WHR"  "OEF"  "F"    "LYB"  "WYNN" "XHB" 
+[51] "AMGN" "ARMH" "BG"   "NUAN" "AFL"  "MRVL" "BIDU" "SINA" "TSO"  "AET" 
+[61] "UNH"  "PHM"  "CPB"  "MAS"  "XLP"  "USO"  "VLO"  "SCCO" "JPM" 
 ```
 
 ## Training Set Generation
 ### X
-Input Variables: Third toy model. Input features: ADX, SMA50, SMA9, RSI14
+Input Variables: Input features: ADX, SMA50, SMA9, RSI14, putcallratio, smoothputcallratio,
+Output: from 1 to 30 periods in future
 
 Example of raw data set:
 
@@ -106,31 +103,31 @@ head(set1.RAW[[1]][complete.cases(set1.RAW[[1]])])
 ```
 
 ```
-                ADX       dADX      DInorm     C2SMA50  dSMA50
-2011-06-14 18.26131 -0.3042618 -0.14305909 -0.04970262 -0.0140
-2011-06-15 18.40959  0.1482766 -0.20337184 -0.07040326 -0.0260
-2011-06-16 18.91065  0.5010596 -0.25424422 -0.06547178 -0.0236
-2011-06-17 18.53816 -0.3724888 -0.13695805 -0.05889537 -0.0186
-2011-06-20 18.19228 -0.3458824 -0.13695805 -0.04422685 -0.0134
-2011-06-21 16.91554 -1.2767361  0.00317972 -0.03091466 -0.0118
-                  C2SMA9        dSMA9    RSI14  dRSI14_3 adv_1_20
-2011-06-14 -0.0001972678 -0.075555556 41.10264  1.375056 5.289608
-2011-06-15 -0.0151538036 -0.130000000 35.89203  1.527000 6.271367
-2011-06-16 -0.0080260848 -0.076666667 37.37885  1.664960 6.208686
-2011-06-17 -0.0018460310 -0.016666667 39.64020 -0.487481 6.008571
-2011-06-20  0.0114212573  0.001111111 44.98861  3.032194 5.302866
-2011-06-21  0.0219790907  0.035555556 49.48743  4.036193 4.617909
-             dec_1_20
-2011-06-14  0.9931509
-2011-06-15 -0.1724087
-2011-06-16 -0.2632658
-2011-06-17 -0.6651555
-2011-06-20 -0.6161006
-2011-06-21  0.0000000
+                  pcr       pcr_5      ADX        dADX     DInorm
+2011-06-14  0.9757965  0.63501156 29.99336 -0.12578320 -0.2835817
+2011-06-15  1.2925262  0.91995153 28.84255 -1.15080932 -0.1388203
+2011-06-16  0.4652630  0.70327477 28.72189 -0.12065550 -0.2715337
+2011-06-17 -1.5913542 -0.44386881 28.11968 -0.60221455 -0.2029089
+2011-06-20  0.4107865 -0.26934477 28.15339  0.03371121 -0.2859163
+2011-06-21  0.8971866 -0.05310884 27.36067 -0.79272260 -0.1705527
+               C2SMA50  dSMA50       C2SMA9       dSMA9    RSI14  dRSI14_3
+2011-06-14 -0.05559955 -0.0564  0.029663147  0.01111111 47.24137  6.453564
+2011-06-15 -0.09084309 -0.0628 -0.001593807 -0.09666667 39.84856  2.835875
+2011-06-16 -0.08635328 -0.0556  0.003341444 -0.07888889 40.59936  3.776951
+2011-06-17 -0.10916044 -0.0840 -0.017063374 -0.09444444 36.36315 -3.626072
+2011-06-20 -0.10560000 -0.0860 -0.013864013 -0.07666667 36.63700 -1.070519
+2011-06-21 -0.06170066 -0.0798  0.020747550  0.12333333 47.30126  2.233969
+           adv_1_30    dec_1_30
+2011-06-14 3.152313  1.88540219
+2011-06-15 4.217382  0.66742973
+2011-06-16 4.179612  0.76348889
+2011-06-17 4.862574 -0.02888658
+2011-06-20 4.930669  0.70718764
+2011-06-21 3.527583  1.93018717
 ```
 
 ### Y
-Output Variables: Class of upward/downward price shift in 3 equal classes of ATR returns. 
+Output Variables: First toy model: Class of upward/downward price shift in quartiles of ATR returns. 
 Classify price advances / declines.
 
 Boundaries:
@@ -140,8 +137,8 @@ set1.adv.boundaries
 ```
 
 ```
-   33.3%    66.7% 
-1.008646 2.673864 
+      25%       50%       75% 
+0.8615062 2.2359704 4.0172270 
 ```
 
 ```r
@@ -149,8 +146,8 @@ set2.adv.boundaries
 ```
 
 ```
-   33.3%    66.7% 
-1.010787 2.658423 
+      25%       50%       75% 
+0.9446338 2.3608165 4.1495168 
 ```
 
 ```r
@@ -158,8 +155,8 @@ vd.adv.boundaries
 ```
 
 ```
-   33.3%    66.7% 
-1.012376 2.672948 
+      25%       50%       75% 
+0.9663973 2.3418742 4.1025514 
 ```
 
 ```r
@@ -167,8 +164,8 @@ set1.dec.boundaries
 ```
 
 ```
-    33.3%     66.7% 
-0.7840227 2.4878537 
+      25%       50%       75% 
+0.6934371 2.0297723 3.9560794 
 ```
 
 ```r
@@ -176,8 +173,8 @@ set2.dec.boundaries
 ```
 
 ```
-    33.3%     66.7% 
-0.7868784 2.4818193 
+      25%       50%       75% 
+0.6426082 1.9540387 3.8726396 
 ```
 
 ```r
@@ -185,8 +182,8 @@ vd.dec.boundaries
 ```
 
 ```
-    33.3%     66.7% 
-0.8083776 2.4966987 
+      25%       50%       75% 
+0.6476853 1.9500922 3.7881544 
 ```
 
 ### Schema of Training Data Set
@@ -197,20 +194,20 @@ head(trainDF1a.t)
 ```
 
 ```
-       ADX       dADX      DInorm     C2SMA50  dSMA50        C2SMA9
-1 18.26131 -0.3042618 -0.14305909 -0.04970262 -0.0140 -0.0001972678
-2 18.40959  0.1482766 -0.20337184 -0.07040326 -0.0260 -0.0151538036
-3 18.91065  0.5010596 -0.25424422 -0.06547178 -0.0236 -0.0080260848
-4 18.53816 -0.3724888 -0.13695805 -0.05889537 -0.0186 -0.0018460310
-5 18.19228 -0.3458824 -0.13695805 -0.04422685 -0.0134  0.0114212573
-6 16.91554 -1.2767361  0.00317972 -0.03091466 -0.0118  0.0219790907
-         dSMA9    RSI14  dRSI14_3 y
-1 -0.075555556 41.10264  1.375056 2
-2 -0.130000000 35.89203  1.527000 2
-3 -0.076666667 37.37885  1.664960 2
-4 -0.016666667 39.64020 -0.487481 2
-5  0.001111111 44.98861  3.032194 2
-6  0.035555556 49.48743  4.036193 2
+         pcr       pcr_5      ADX        dADX     DInorm     C2SMA50
+1  0.9757965  0.63501156 29.99336 -0.12578320 -0.2835817 -0.05559955
+2  1.2925262  0.91995153 28.84255 -1.15080932 -0.1388203 -0.09084309
+3  0.4652630  0.70327477 28.72189 -0.12065550 -0.2715337 -0.08635328
+4 -1.5913542 -0.44386881 28.11968 -0.60221455 -0.2029089 -0.10916044
+5  0.4107865 -0.26934477 28.15339  0.03371121 -0.2859163 -0.10560000
+6  0.8971866 -0.05310884 27.36067 -0.79272260 -0.1705527 -0.06170066
+   dSMA50       C2SMA9       dSMA9    RSI14  dRSI14_3 y
+1 -0.0564  0.029663147  0.01111111 47.24137  6.453564 2
+2 -0.0628 -0.001593807 -0.09666667 39.84856  2.835875 3
+3 -0.0556  0.003341444 -0.07888889 40.59936  3.776951 3
+4 -0.0840 -0.017063374 -0.09444444 36.36315 -3.626072 3
+5 -0.0860 -0.013864013 -0.07666667 36.63700 -1.070519 3
+6 -0.0798  0.020747550  0.12333333 47.30126  2.233969 2
 ```
 
 ## Training Algorithm
@@ -223,255 +220,263 @@ f1a.os :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 20299 19222 17546
-         1 18306 19982 18698
-         2 20545 21356 23891
+Prediction     0     1     2     3
+         0 10598 11020 10831 10866
+         1  9870 10512 10600 10433
+         2  9323 10435 11538 11402
+         3 11544 11458 12872 15147
 
 Overall Statistics
-                                         
-               Accuracy : 0.3568         
-                 95% CI : (0.3546, 0.359)
-    No Information Rate : 0.3367         
-    P-Value [Acc > NIR] : < 2.2e-16      
-                                         
-                  Kappa : 0.0352         
- Mcnemar's Test P-Value : < 2.2e-16      
+                                          
+               Accuracy : 0.2678          
+                 95% CI : (0.2658, 0.2699)
+    No Information Rate : 0.2681          
+    P-Value [Acc > NIR] : 0.6124          
+                                          
+                  Kappa : 0.0227          
+ Mcnemar's Test P-Value : <2e-16          
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3432   0.3300   0.3973
-Specificity            0.6954   0.6898   0.6500
-Pos Pred Value         0.3557   0.3506   0.3631
-Neg Pred Value         0.6836   0.6697   0.6822
-Prevalence             0.3289   0.3367   0.3344
-Detection Rate         0.1129   0.1111   0.1328
-Detection Prevalence   0.3173   0.3169   0.3658
-Balanced Accuracy      0.5193   0.5099   0.5236
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.25639  0.24207  0.25170  0.31656
+Specificity           0.76139  0.77113  0.76502  0.72532
+Pos Pred Value        0.24467  0.25382  0.27022  0.29688
+Neg Pred Value        0.77254  0.75982  0.74731  0.74338
+Prevalence            0.23163  0.24335  0.25689  0.26813
+Detection Rate        0.05939  0.05891  0.06466  0.08488
+Detection Prevalence  0.24273  0.23208  0.23927  0.28591
+Balanced Accuracy     0.50889  0.50660  0.50836  0.52094
 -----------------------------------------------------------
 
 f1a.vd :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 10005  9733  9326
-         1  9287  9838  9281
-         2 10098 10321 11384
+Prediction    0    1    2    3
+         0 4903 5068 4862 5009
+         1 4566 5200 5201 4844
+         2 4621 5275 5794 5402
+         3 5975 6614 7074 8173
 
 Overall Statistics
                                           
-               Accuracy : 0.3498          
-                 95% CI : (0.3467, 0.3529)
-    No Information Rate : 0.3359          
-    P-Value [Acc > NIR] : < 2.2e-16       
+               Accuracy : 0.2717          
+                 95% CI : (0.2688, 0.2747)
+    No Information Rate : 0.2645          
+    P-Value [Acc > NIR] : 5.485e-07       
                                           
-                  Kappa : 0.0246          
+                  Kappa : 0.0271          
  Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3404   0.3291   0.3796
-Specificity            0.6817   0.6873   0.6556
-Pos Pred Value         0.3442   0.3463   0.3580
-Neg Pred Value         0.6780   0.6705   0.6762
-Prevalence             0.3292   0.3348   0.3359
-Detection Rate         0.1121   0.1102   0.1275
-Detection Prevalence   0.3256   0.3182   0.3562
-Balanced Accuracy      0.5111   0.5082   0.5176
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.24436   0.2347  0.25267  0.34886
+Specificity           0.78196   0.7800  0.76698  0.69820
+Pos Pred Value        0.24710   0.2625  0.27470  0.29361
+Neg Pred Value        0.77943   0.7534  0.74608  0.74887
+Prevalence            0.22652   0.2501  0.25887  0.26448
+Detection Rate        0.05535   0.0587  0.06541  0.09227
+Detection Prevalence  0.22400   0.2236  0.23811  0.31424
+Balanced Accuracy     0.51316   0.5074  0.50982  0.52353
 -----------------------------------------------------------
 
 f2a.os :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 19938 18216 17768
-         1 19838 21119 20252
-         2 19895 20646 23458
+Prediction     0     1     2     3
+         0 12321 10750 10133  9754
+         1 11328 11104 10161  8974
+         2 11068 10954 10770 10167
+         3 12631 12827 12857 13938
 
 Overall Statistics
-                                         
-               Accuracy : 0.3562         
-                 95% CI : (0.354, 0.3584)
-    No Information Rate : 0.3394         
-    P-Value [Acc > NIR] : < 2.2e-16      
-                                         
-                  Kappa : 0.034          
- Mcnemar's Test P-Value : < 2.2e-16      
+                                          
+               Accuracy : 0.2678          
+                 95% CI : (0.2658, 0.2699)
+    No Information Rate : 0.2634          
+    P-Value [Acc > NIR] : 1.371e-05       
+                                          
+                  Kappa : 0.0246          
+ Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3341   0.3521   0.3816
-Specificity            0.7037   0.6691   0.6612
-Pos Pred Value         0.3565   0.3450   0.3665
-Neg Pred Value         0.6827   0.6759   0.6754
-Prevalence             0.3294   0.3311   0.3394
-Detection Rate         0.1101   0.1166   0.1295
-Detection Prevalence   0.3087   0.3379   0.3533
-Balanced Accuracy      0.5189   0.5106   0.5214
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.26022  0.24332  0.24521  0.32540
+Specificity           0.76858  0.77284  0.76300  0.72013
+Pos Pred Value        0.28682  0.26713  0.25070  0.26674
+Neg Pred Value        0.74392  0.75008  0.75763  0.77334
+Prevalence            0.26343  0.25390  0.24436  0.23831
+Detection Rate        0.06855  0.06178  0.05992  0.07755
+Detection Prevalence  0.23900  0.23127  0.23901  0.29072
+Balanced Accuracy     0.51440  0.50808  0.50410  0.52277
 -----------------------------------------------------------
 
 f2a.vd :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0  9721  9110  9060
-         1  9644 10121  9754
-         2 10064 10395 11404
+Prediction    0    1    2    3
+         0 5327 5090 4669 4722
+         1 5005 5455 5226 4594
+         2 5123 5476 5595 5440
+         3 6043 6633 6933 7250
 
 Overall Statistics
                                           
-               Accuracy : 0.35            
-                 95% CI : (0.3469, 0.3531)
-    No Information Rate : 0.3385          
-    P-Value [Acc > NIR] : 2.112e-13       
+               Accuracy : 0.2667          
+                 95% CI : (0.2638, 0.2697)
+    No Information Rate : 0.2557          
+    P-Value [Acc > NIR] : 4.467e-14       
                                           
-                  Kappa : 0.0247          
+                  Kappa : 0.0223          
  Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3303   0.3416   0.3774
-Specificity            0.6964   0.6748   0.6536
-Pos Pred Value         0.3485   0.3429   0.3579
-Neg Pred Value         0.6789   0.6736   0.6723
-Prevalence             0.3297   0.3319   0.3385
-Detection Rate         0.1089   0.1134   0.1277
-Detection Prevalence   0.3124   0.3307   0.3569
-Balanced Accuracy      0.5133   0.5082   0.5155
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.24779  0.24080  0.24952  0.32946
+Specificity           0.78413  0.77513  0.75757  0.70546
+Pos Pred Value        0.26893  0.26898  0.25862  0.26993
+Neg Pred Value        0.76486  0.74819  0.74864  0.76093
+Prevalence            0.24269  0.25574  0.25314  0.24843
+Detection Rate        0.06014  0.06158  0.06316  0.08185
+Detection Prevalence  0.22361  0.22894  0.24423  0.30321
+Balanced Accuracy     0.51596  0.50796  0.50354  0.51746
 -----------------------------------------------------------
 
 f1d.os :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 22872 20981 19599
-         1 18771 19839 18501
-         2 18911 19380 20991
+Prediction     0     1     2     3
+         0 13563 11770 10984 11304
+         1 11014 10735 10171  9446
+         2 10437 10597 10439  9709
+         3 12303 12044 11356 12577
 
 Overall Statistics
-                                         
-               Accuracy : 0.3542         
-                 95% CI : (0.352, 0.3564)
-    No Information Rate : 0.3367         
-    P-Value [Acc > NIR] : < 2.2e-16      
-                                         
-                  Kappa : 0.0312         
- Mcnemar's Test P-Value : < 2.2e-16      
+                                          
+               Accuracy : 0.2651          
+                 95% CI : (0.2631, 0.2672)
+    No Information Rate : 0.2652          
+    P-Value [Acc > NIR] : 0.5073          
+                                          
+                  Kappa : 0.0199          
+ Mcnemar's Test P-Value : <2e-16          
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3777   0.3296   0.3552
-Specificity            0.6598   0.6885   0.6829
-Pos Pred Value         0.3605   0.3474   0.3541
-Neg Pred Value         0.6763   0.6712   0.6840
-Prevalence             0.3367   0.3347   0.3286
-Detection Rate         0.1272   0.1103   0.1167
-Detection Prevalence   0.3528   0.3176   0.3296
-Balanced Accuracy      0.5188   0.5090   0.5191
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity            0.2866  0.23778   0.2431  0.29224
+Specificity            0.7403  0.77022   0.7731  0.73634
+Pos Pred Value         0.2848  0.25951   0.2535  0.26050
+Neg Pred Value         0.7420  0.74898   0.7632  0.76600
+Prevalence             0.2652  0.25299   0.2407  0.24117
+Detection Rate         0.0760  0.06016   0.0585  0.07048
+Detection Prevalence   0.2669  0.23181   0.2308  0.27055
+Balanced Accuracy      0.5135  0.50400   0.5081  0.51429
 -----------------------------------------------------------
 
 f1d.vd :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 10669 10306  9696
-         1  9558 10134  9574
-         2  9316  9716 10304
+Prediction    0    1    2    3
+         0 7173 6363 5725 5355
+         1 5255 5224 5087 4383
+         2 4750 5124 5307 4425
+         3 6160 5947 5962 6341
 
 Overall Statistics
                                           
-               Accuracy : 0.3484          
-                 95% CI : (0.3453, 0.3516)
-    No Information Rate : 0.3378          
-    P-Value [Acc > NIR] : 9.755e-12       
+               Accuracy : 0.2714          
+                 95% CI : (0.2685, 0.2744)
+    No Information Rate : 0.2635          
+    P-Value [Acc > NIR] : 3.891e-08       
                                           
-                  Kappa : 0.0227          
- Mcnemar's Test P-Value : 5.054e-08       
+                  Kappa : 0.0289          
+ Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3611   0.3361   0.3484
-Specificity            0.6651   0.6764   0.6812
-Pos Pred Value         0.3479   0.3463   0.3512
-Neg Pred Value         0.6779   0.6663   0.6785
-Prevalence             0.3309   0.3378   0.3313
-Detection Rate         0.1195   0.1135   0.1154
-Detection Prevalence   0.3436   0.3278   0.3286
-Balanced Accuracy      0.5131   0.5062   0.5148
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.30735  0.23056  0.24034  0.30926
+Specificity           0.73265  0.77663  0.78498  0.73458
+Pos Pred Value        0.29140  0.26187  0.27068  0.25977
+Neg Pred Value        0.74728  0.74598  0.75681  0.77929
+Prevalence            0.26347  0.25579  0.24927  0.23147
+Detection Rate        0.08098  0.05897  0.05991  0.07158
+Detection Prevalence  0.27789  0.22521  0.22133  0.27557
+Balanced Accuracy     0.52000  0.50360  0.51266  0.52192
 -----------------------------------------------------------
 
 f2d.os :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 23269 20888 20164
-         1 19123 20075 18806
-         2 18815 19075 20915
+Prediction     0     1     2     3
+         0 12737 12297 11671 11754
+         1 10500 10779 10767 10542
+         2  9647 10742 11550 10734
+         3 10805 10774 11250 13188
 
 Overall Statistics
-                                         
-               Accuracy : 0.3548         
-                 95% CI : (0.3526, 0.357)
-    No Information Rate : 0.3379         
-    P-Value [Acc > NIR] : < 2.2e-16      
-                                         
-                  Kappa : 0.0319         
- Mcnemar's Test P-Value : < 2.2e-16      
+                                          
+               Accuracy : 0.2685          
+                 95% CI : (0.2664, 0.2705)
+    No Information Rate : 0.2571          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.0247          
+ Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3802   0.3344   0.3493
-Specificity            0.6577   0.6868   0.6875
-Pos Pred Value         0.3618   0.3461   0.3557
-Neg Pred Value         0.6752   0.6754   0.6814
-Prevalence             0.3379   0.3315   0.3306
-Detection Rate         0.1285   0.1108   0.1155
-Detection Prevalence   0.3551   0.3202   0.3247
-Balanced Accuracy      0.5189   0.5106   0.5184
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.29154  0.24172  0.25532  0.28534
+Specificity           0.73743  0.76463  0.76860  0.75412
+Pos Pred Value        0.26284  0.25310  0.27066  0.28659
+Neg Pred Value        0.76423  0.75346  0.75422  0.75299
+Prevalence            0.24307  0.24810  0.25169  0.25714
+Detection Rate        0.07086  0.05997  0.06426  0.07337
+Detection Prevalence  0.26961  0.23695  0.23742  0.25602
+Balanced Accuracy     0.51448  0.50318  0.51196  0.51973
 -----------------------------------------------------------
 
 f2d.vd :
 Confusion Matrix and Statistics
 
           Reference
-Prediction     0     1     2
-         0 11121 10678 10184
-         1  9454  9989  9491
-         2  9030  9340  9986
+Prediction    0    1    2    3
+         0 6655 6172 5806 5541
+         1 5242 5421 5416 4506
+         2 4724 5143 5623 4622
+         3 5776 5683 5740 6511
 
 Overall Statistics
                                           
-               Accuracy : 0.3483          
-                 95% CI : (0.3452, 0.3515)
-    No Information Rate : 0.3361          
-    P-Value [Acc > NIR] : 7.352e-15       
+               Accuracy : 0.2733          
+                 95% CI : (0.2704, 0.2763)
+    No Information Rate : 0.255           
+    P-Value [Acc > NIR] : < 2.2e-16       
                                           
-                  Kappa : 0.0226          
+                  Kappa : 0.0315          
  Mcnemar's Test P-Value : < 2.2e-16       
 
 Statistics by Class:
 
-                     Class: 0 Class: 1 Class: 2
-Sensitivity            0.3756   0.3329   0.3367
-Specificity            0.6504   0.6803   0.6918
-Pos Pred Value         0.3477   0.3452   0.3522
-Neg Pred Value         0.6774   0.6682   0.6770
-Prevalence             0.3316   0.3361   0.3323
-Detection Rate         0.1246   0.1119   0.1119
-Detection Prevalence   0.3583   0.3241   0.3176
-Balanced Accuracy      0.5130   0.5066   0.5143
+                     Class: 0 Class: 1 Class: 2 Class: 3
+Sensitivity           0.29714   0.2418  0.24897   0.3074
+Specificity           0.73530   0.7708  0.78046   0.7448
+Pos Pred Value        0.27530   0.2633  0.27958   0.2746
+Neg Pred Value        0.75559   0.7500  0.75227   0.7739
+Prevalence            0.25284   0.2531  0.25496   0.2391
+Detection Rate        0.07513   0.0612  0.06348   0.0735
+Detection Prevalence  0.27290   0.2324  0.22705   0.2677
+Balanced Accuracy     0.51622   0.5063  0.51471   0.5261
 -----------------------------------------------------------
 ```

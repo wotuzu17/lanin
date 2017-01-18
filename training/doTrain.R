@@ -58,9 +58,9 @@ opt
 # for debug
 if (opt$xversion == 0) {
   opt<-list()
-  opt$xversion <- 1
+  opt$xversion <- 6
   opt$yversion <- 1
-  opt$aversion <- 3
+  opt$aversion <- 2
   opt$rate <- 10
   opt$seed <- 123
 }

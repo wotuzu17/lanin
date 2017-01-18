@@ -47,6 +47,24 @@ head(trainDF1a.t)
 ## Training Algorithm
 Training Algorithm: `r a.remark`
 
+### train objects
+required time:
+
+```{r}
+time.1a
+time.2a
+time.1d
+time.2d
+```
+
+```{r, comment=NA, echo=FALSE}
+for (i in 1:length(fit)) {
+  cat(paste(names(fit)[i], ":\n"))
+  print(fit[[i]])
+  cat("-----------------------------------------------------------\n\n")
+}
+```
+
 ### Confusion Matrices
 ```{r, comment=NA, echo=FALSE}
 for (i in 1:length(cm)) {
@@ -55,3 +73,5 @@ for (i in 1:length(cm)) {
   cat("-----------------------------------------------------------\n\n")
 }
 ```
+
+The script completed at `r format(Sys.time(), "%Y-%m-%d_%H-%M")`.
