@@ -47,6 +47,11 @@ head(trainDF1a.t)
 ## Training Algorithm
 Training Algorithm: `r a.remark`
 
+### Used TrainIt function
+```{r}
+trainIt
+```
+
 ### train objects
 required time:
 

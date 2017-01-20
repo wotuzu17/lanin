@@ -1,14 +1,10 @@
 cat("Doing A.\n")
-a.remark <- "Use only single core processing to prevent excessive memory consumption"
+a.remark <- "Use svm from package e1071"
+suppressPackageStartupMessages(library(e1071))
 
 # shorten dimension of training data to reduce train time
 shortenTrainingData <- function(full.tdf, rate){
   inTrain <- createDataPartition(full.tdf[,ncol(full.tdf)], p=1/rate)[[1]]
-  return(full.tdf[inTrain,])
-}
-
-simpleSampleShortTrainingData <- function(full.tdf, rate) {
-  inTrain <- sample(1:nrow(full.tdf), nrow(full.tdf)/rate)
   return(full.tdf[inTrain,])
 }
 
@@ -18,10 +14,7 @@ trainDF1d.t.s <- shortenTrainingData(trainDF1d.t, opt$rate)
 trainDF2d.t.s <- shortenTrainingData(trainDF2d.t, opt$rate)
 
 trainIt <- function(train) {
-  fitControl <- trainControl(method = "cv", 
-                             returnData = TRUE,
-                             returnResamp = "none")
-  fit <- train(y ~ ., data=train, method="rf", trControl=fitControl)
+  fit <- svm(y ~ ., data=train)
   return(fit)
 }
 

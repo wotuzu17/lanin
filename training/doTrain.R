@@ -28,6 +28,7 @@ suppressPackageStartupMessages(library(parallel)) # required by doMC
 suppressPackageStartupMessages(library(doMC))     # Parallel Processing for caret (doc: http://topepo.github.io/caret/parallel-processing.html)
 suppressPackageStartupMessages(library(knitr))
 
+
 # load lanin functions
 source("/home/voellenk/.lanindb.R")     # secret key file
 source("/home/voellenk/lanin_workdir/lanin/lib/db_basic_functions.R")
@@ -58,11 +59,11 @@ opt
 # for debug
 if (opt$xversion == 0) {
   opt<-list()
-  opt$xversion <- 6
-  opt$yversion <- 1
-  opt$aversion <- 2
+  opt$xversion <- 7
+  opt$yversion <- 3
+  opt$aversion <- 5
   opt$rate <- 10
-  opt$seed <- 123
+  opt$seed <- 234
 }
 
 

@@ -67,6 +67,32 @@ smoothputcallratio <- function(OS, n) {
   return(res)
 }
 
+# period can be 30,60,90,120,150,180,360
+# value is positive when call implied volatility is lower than put implied volatility
+putcallIVratio <- function(OS, period) {
+  ivc <- OS[,sprintf("iv%dcall", period),]
+  ivp <- OS[,sprintf("iv%dput", period),]
+  ivr <- (ivc-ivp)/(ivc+ivp)
+  colnames(ivr) <- sprintf("pcIVr%d", period)
+  return(ivr)
+}
+
+# current implied vola to implied vola of median past n periods
+vola2medianvola <- function(OS, period, n) {
+  medianiv <- runMedian(OS[,sprintf("iv%dmean", period),], n=n)
+  res <- OS[,sprintf("iv%dmean", period),]/medianiv - 1
+  colnames(res) <- paste0("v2medIV", period)
+  return(res)
+}
+
+# current implied vola to mean implied vola of past n periods
+vola2meanvola <- function(OS, period, n) {
+  meaniv <- runMean(OS[,sprintf("iv%dmean", period),], n=n)
+  res <- OS[,sprintf("iv%dmean", period),]/meaniv -1
+  colnames(res) <- paste0("v2mIV", period)
+  return(res)
+}
+
 ########## outcome functions #########################################
 
 # calulates maximum up/down movement in window from t+nl to t+nh periods
