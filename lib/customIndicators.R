@@ -51,6 +51,19 @@ returnADX1 <- function(TS, ADXn=14) {
   return(TSA[,c(4,5,6)])
 }
 
+# returns ADX values
+#  ADX        dADX      DInorm   ADX*DInorm
+returnADX2 <- function(TS, ADXn=14) {
+  TSA <- ADX(TS, n=ADXn)
+  TSA <- cbind(TSA, diff(TSA[,"ADX"]))
+  colnames(TSA)[ncol(TSA)] <- "dADX"
+  TSA <- cbind(TSA, (TSA[,1]-TSA[,2])/(TSA[,1] + TSA[,2]))
+  colnames(TSA)[ncol(TSA)] <- "DInorm"
+  TSA <- cbind(TSA, (TSA[,4] * TSA[,6]))
+  colnames(TSA)[ncol(TSA)] <- "ADXxDInorm"
+  return(TSA[,c(4,5,6,7)])
+}
+
 ########## option stats indicator functions ##########################
 
 # put to call ratio
