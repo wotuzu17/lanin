@@ -1,0 +1,69 @@
+# Lanin Training Report
+## Training (Startup) Parameters
+The training process was started at `r format(start.time, "%Y-%m-%d_%H-%M")`.
+
+The startup Parameters are:
+```{r, comment=NA}
+opt
+```
+
+## Training and Validation Symbols
+These Symbols were used for training:
+```{r, comment=NA}
+set1Syms
+set2Syms
+vdSyms
+```
+
+## Training Set Generation
+### X
+Input Variables: `r x.remark`
+
+Example of raw data set:
+```{r, comment=NA}
+head(set1.RAW[[1]][complete.cases(set1.RAW[[1]])])
+```
+
+### Y
+Output Variables: `r y.remark`
+
+### Schema of Training Data Set
+Example:
+```{r, comment=NA}
+head(trainDF1)
+```
+
+## Training Algorithm
+Training Algorithm: `r a.remark`
+
+### Used TrainIt function
+```{r}
+trainIt
+```
+
+### train objects
+required time:
+
+```{r}
+time.1
+time.2
+```
+
+```{r, comment=NA, echo=FALSE}
+for (i in 1:length(fit)) {
+  cat(paste(names(fit)[i], ":\n"))
+  print(fit[[i]])
+  cat("-----------------------------------------------------------\n\n")
+}
+```
+
+### Confusion Matrices
+```{r, comment=NA, echo=FALSE}
+for (i in 1:length(cm)) {
+  cat(paste(names(cm)[i], ":\n"))
+  print(cm[[i]])
+  cat("-----------------------------------------------------------\n\n")
+}
+```
+
+The script completed at `r format(Sys.time(), "%Y-%m-%d_%H-%M")`.

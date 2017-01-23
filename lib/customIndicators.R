@@ -123,6 +123,18 @@ calcPriceShifts <- function(TS, nl=1, nh=10, ATRn=20) {
   return(cbind(adv, dec))
 }
 
+calcROC <- function(TS, n=10) {
+  roc <- ROC(Cl(TS), n=n)
+  colnames(roc) <- paste0("roc_", n)
+  return(roc)
+}
+
+calcMomentum <- function(TS, n=10) {
+  mom <- momentum(Cl(TS), n=n)
+  colnames(mom) <- paste0("mom_", n)
+  return(mom)
+}
+
 # on a known time series, calc buy and sell opportunities
 calcBuySellSignal <- function(TS, n=5, ATRn=20, method="worst1") {
   pp <- as.numeric(gsub("\\D", "", method))

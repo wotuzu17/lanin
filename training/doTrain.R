@@ -47,6 +47,8 @@ option_list <- list(
               help="Version to build outcome variable [default %default]", metavar="number"),
   make_option(c("-a", "--aversion"), type="integer", default=0,
               help="Machine Learning Algorithm to use [default %default]", metavar="number"),
+  make_option(c("-k", "--kversion"), type="integer", default=0,
+              help="Knitr report scheme to create [default %default]", metavar="number"),
   make_option(c("-r", "--rate"), type="integer", default=5,
               help="Use 1/r training rows out of all available rows. Greater r = shorter training time. [default %default]", metavar="number"),  
   make_option(c("-s", "--seed"), type="integer", default=123,
@@ -59,10 +61,11 @@ opt
 # for debug
 if (opt$xversion == 0) {
   opt<-list()
-  opt$xversion <- 9
-  opt$yversion <- 5
-  opt$aversion <- 6
-  opt$rate <- 4
+  opt$xversion <- 11
+  opt$yversion <- 7
+  opt$aversion <- 7
+  opt$kversion <- 2
+  opt$rate <- 100
   opt$seed <- 234
 }
 
@@ -96,25 +99,7 @@ source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/a_%d.R", opt
 dbDisconnect(con)
 #############################################################################
 
-# create knitr report
-knit2html("/home/voellenk/lanin_workdir/lanin/training/TrainReport.Rmd",
-          paste0(knitrReportDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
-          "_x_", opt$xversion,
-          "_y_", opt$yversion,
-          "_a_", opt$aversion,
-          "_r_", opt$rate,
-          "_seed_", opt$seed,
-          ".html"))
-
-
-# store fit models and confusion matrices for further inspection
-save(cm, file=paste0(trainDataDir, "/", format(start.time, "%Y-%m-%d_%H-%M"), 
-                          "_x_", opt$xversion,
-                          "_y_", opt$yversion,
-                          "_a_", opt$aversion,
-                          "_r_", opt$rate,
-                          "_seed_", opt$seed,
-                          ".RData"))
+source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/a_%d.R", opt$kversion))
 
 global.stop.time <- Sys.time()
 cat (paste(global.stop.time, scriptname, "stopped, duration:", 
