@@ -99,7 +99,7 @@ source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/a_%d.R", opt
 dbDisconnect(con)
 #############################################################################
 
-source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/a_%d.R", opt$kversion))
+source(sprintf("/home/voellenk/lanin_workdir/lanin/training/version/k_%d.R", opt$kversion))
 
 global.stop.time <- Sys.time()
 cat (paste(global.stop.time, scriptname, "stopped, duration:", 
