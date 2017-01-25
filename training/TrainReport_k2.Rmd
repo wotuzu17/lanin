@@ -66,4 +66,13 @@ for (i in 1:length(cm)) {
 }
 ```
 
+### Importance Plot
+```{r, echo=FALSE}
+varImpPlot(fit.fm[["f1"]])
+```
+
+```{r, echo=FALSE}
+varImpPlot(fit.fm[["f2"]])
+```
+
 The script completed at `r format(Sys.time(), "%Y-%m-%d_%H-%M")`.
