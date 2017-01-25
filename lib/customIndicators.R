@@ -124,7 +124,7 @@ calcPriceShifts <- function(TS, nl=1, nh=10, ATRn=20) {
 }
 
 calcROC <- function(TS, n=10) {
-  roc <- ROC(Cl(TS), n=n)
+  roc <- lag(ROC(Cl(TS), n=n), k=n*(-1))
   colnames(roc) <- paste0("roc_", n)
   return(roc)
 }
