@@ -1,10 +1,10 @@
 #!/usr/bin/Rscript --vanilla
 
 # script performs training according to command line arguments
-# it is used to perform time consuming machine learning trainings
+# it is used to perform time consuming machine learning trainings.
 # the model and results on validation data set are archived in
 # RData file and a knitr report of the outcome is generated.
-# caret training functions are used
+# RSNNS training is used
 
 Sys.setenv(TZ="UTC")
 scriptname <- "doTrain.R" # for logging
@@ -19,16 +19,10 @@ suppressPackageStartupMessages(library(TTR))
 suppressPackageStartupMessages(library(quantmod))
 suppressPackageStartupMessages(library(DBI))
 suppressPackageStartupMessages(library(RMySQL))
-suppressPackageStartupMessages(library(lattice))
 suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(caret))
-suppressPackageStartupMessages(library(randomForest))
-suppressPackageStartupMessages(library(foreach))  # required by doMC
-suppressPackageStartupMessages(library(iterators))# required by doMC
-suppressPackageStartupMessages(library(parallel)) # required by doMC
-suppressPackageStartupMessages(library(doMC))     # Parallel Processing for caret (doc: http://topepo.github.io/caret/parallel-processing.html)
 suppressPackageStartupMessages(library(knitr))
-
+suppressPackageStartupMessages(library(RSNNS))
+suppressPackageStartupMessages(library(caret))
 
 # load lanin functions
 source("/home/voellenk/.lanindb.R")     # secret key file
@@ -66,7 +60,7 @@ if (opt$xversion == 0) {
   opt$yversion <- 7
   opt$aversion <- 7
   opt$kversion <- 2
-  opt$rate <- 100
+  opt$rate <- 5
   opt$seed <- 234
 }
 
